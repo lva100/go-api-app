@@ -7,6 +7,7 @@ import (
 	"go/adv-demo/internal/hello"
 	"go/adv-demo/internal/link"
 	"go/adv-demo/pkg/db"
+	"go/adv-demo/pkg/middleware"
 	"net/http"
 )
 
@@ -25,7 +26,7 @@ func HttpSrv() {
 
 	server := http.Server{
 		Addr:    ":8081",
-		Handler: router,
+		Handler: middleware.Logging(router),
 	}
 	fmt.Println("Server is listining on port 8081...")
 	server.ListenAndServe()
