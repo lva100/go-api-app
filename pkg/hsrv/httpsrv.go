@@ -24,9 +24,15 @@ func HttpSrv() {
 	})
 	hello.NewHelloHandler(router)
 
+	//Middleware
+	stack := middleware.Chain(
+		middleware.CORS,
+		middleware.Logging,
+	)
+
 	server := http.Server{
 		Addr:    ":8081",
-		Handler: middleware.Logging(router),
+		Handler: stack(router),
 	}
 	fmt.Println("Server is listining on port 8081...")
 	server.ListenAndServe()
