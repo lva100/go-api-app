@@ -23,7 +23,6 @@ func HttpSrv() {
 		LinkRepository: linkRepository,
 	})
 	hello.NewHelloHandler(router)
-
 	//Middleware
 	stack := middleware.Chain(
 		middleware.CORS,
