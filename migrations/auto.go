@@ -2,8 +2,8 @@ package main
 
 import (
 	"go/adv-demo/internal/link"
+	"go/adv-demo/internal/user"
 	"os"
-	"os/user"
 
 	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
