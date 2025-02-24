@@ -6,8 +6,11 @@ type LoginRequest struct {
 }
 
 type LoginResponse struct {
-	Message string `json:"message"`
-	Token   string `json:"token"`
+	Token string `json:"token"`
+}
+
+type RegisterResponse struct {
+	Token string `json:"token"`
 }
 
 type RegisterRequest struct {
