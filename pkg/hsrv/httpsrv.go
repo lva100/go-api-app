@@ -28,6 +28,7 @@ func HttpSrv() {
 	})
 	link.NewAuthHandler(router, link.LinkHandlerDeps{
 		LinkRepository: linkRepository,
+		Config:         conf,
 	})
 	hello.NewHelloHandler(router)
 	//Middleware

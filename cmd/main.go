@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"go/adv-demo/pkg/hsrv"
 	"time"
 )
 
@@ -12,10 +13,10 @@ func main() {
 	// sliceSum()
 	// ping()
 	/*-----*/
-	// hsrv.HttpSrv()
+	hsrv.HttpSrv()
 	// ContextWithTimeOut()
 	// ContextWithValue()
-	ContextWithCancel()
+	// ContextWithCancel()
 }
 
 func ContextWithTimeOut() {
