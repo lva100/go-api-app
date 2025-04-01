@@ -16,7 +16,8 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	db, err := gorm.Open(postgres.Open(os.Getenv("DSN")), &gorm.Config{DisableForeignKeyConstraintWhenMigrating: true})
+	db, err := gorm.Open(postgres.Open(os.Getenv("DSN")), &gorm.Config{})
+	// db, err := gorm.Open(postgres.Open(os.Getenv("DSN")), &gorm.Config{DisableForeignKeyConstraintWhenMigrating: true})
 	if err != nil {
 		panic(err)
 	}

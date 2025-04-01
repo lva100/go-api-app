@@ -6,6 +6,7 @@ import (
 	"go/adv-demo/internal/auth"
 	"go/adv-demo/internal/hello"
 	"go/adv-demo/internal/link"
+	"go/adv-demo/internal/stat"
 	"go/adv-demo/internal/user"
 	"go/adv-demo/pkg/db"
 	"go/adv-demo/pkg/middleware"
@@ -19,6 +20,7 @@ func HttpSrv() {
 	//Repositories
 	linkRepository := link.NewLinkRepository(db)
 	userRepository := user.NewUserRepository(db)
+	statRepository := stat.NewStatRepository(db)
 	//Services
 	authService := auth.NewAuthService(userRepository)
 	//Handlers
@@ -28,6 +30,7 @@ func HttpSrv() {
 	})
 	link.NewAuthHandler(router, link.LinkHandlerDeps{
 		LinkRepository: linkRepository,
+		StatRepository: statRepository,
 		Config:         conf,
 	})
 	hello.NewHelloHandler(router)
