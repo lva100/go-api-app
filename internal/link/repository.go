@@ -70,7 +70,16 @@ func (repo *LinkRepository) Count() int64 {
 
 func (repo *LinkRepository) GetAll(limit, offset int) []Link {
 	var links []Link
+	// query := repo.Database.
+	// 	Table("links").
+	// 	Where("deleted_at is null").
+	// 	Session(&gorm.Session{})
 
+	// query.
+	// 	Order("id ASC").
+	// 	Limit(limit).
+	// 	Offset(offset).
+	// 	Scan(&links)
 	repo.Database.
 		Table("links").
 		Where("deleted_at is null").
