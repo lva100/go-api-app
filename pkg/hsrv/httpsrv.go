@@ -14,7 +14,7 @@ import (
 	"net/http"
 )
 
-func HttpSrv() {
+func App() http.Handler {
 	conf := configs.LoadConfig()
 	db := db.NewDb(conf)
 	router := http.NewServeMux()
@@ -44,18 +44,23 @@ func HttpSrv() {
 		Config:         conf,
 	})
 	hello.NewHelloHandler(router)
+
+	go statService.AddClick()
+
 	//Middleware
 	stack := middleware.Chain(
 		middleware.CORS,
 		middleware.Logging,
 	)
+	return stack(router)
+}
 
+func HttpSrv() {
+	app := App()
 	server := http.Server{
 		Addr:    ":8081",
-		Handler: stack(router),
+		Handler: app,
 	}
-
-	go statService.AddClick()
 
 	fmt.Println("Server is listining on port 8081...")
 	server.ListenAndServe()
