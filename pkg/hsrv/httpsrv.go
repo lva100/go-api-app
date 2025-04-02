@@ -39,6 +39,10 @@ func HttpSrv() {
 		EventBus:       eventBus,
 		Config:         conf,
 	})
+	stat.NewStatHandler(router, stat.StatHandlerDeps{
+		StatRepository: statRepository,
+		Config:         conf,
+	})
 	hello.NewHelloHandler(router)
 	//Middleware
 	stack := middleware.Chain(

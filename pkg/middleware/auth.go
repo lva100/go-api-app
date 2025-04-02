@@ -2,7 +2,6 @@ package middleware
 
 import (
 	"context"
-	"fmt"
 	"go/adv-demo/configs"
 	"go/adv-demo/pkg/jwt"
 	"net/http"
@@ -28,8 +27,8 @@ func IsAuthed(next http.Handler, config *configs.Config) http.Handler {
 			return
 		}
 		token := strings.TrimPrefix(authHeader, "Bearer ")
-		fmt.Println(config.Auth.Secret)
-		fmt.Println(token)
+		// fmt.Println(config.Auth.Secret)
+		// fmt.Println(token)
 		isValid, data := jwt.NewJWT(config.Auth.Secret).Parse(token)
 		if !isValid {
 			writeUnauthed(w)
