@@ -34,7 +34,7 @@ func App() http.Handler {
 		Config:      conf,
 		AuthService: authService,
 	})
-	link.NewAuthHandler(router, link.LinkHandlerDeps{
+	link.NewLinkHandler(router, link.LinkHandlerDeps{
 		LinkRepository: linkRepository,
 		EventBus:       eventBus,
 		Config:         conf,
